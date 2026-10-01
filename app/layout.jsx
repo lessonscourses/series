@@ -5,8 +5,8 @@ import StickyCta from '@/components/StickyCta';
 import Interactions from '@/components/Interactions';
 
 export const metadata = {
-  title: 'Legends Investor Meetings — October 2026',
-  description: 'Curated offline evenings for investors in New York, San Francisco, London and Amsterdam.',
+  title: 'Legends - Private Investor Dinners',
+  description: 'Private networking dinners for investors, October - December 2026: Singapore, Dubai, Abu Dhabi, Riyadh, New York, Zurich, London, Palm Beach.',
 };
 
 export default function RootLayout({ children }) {

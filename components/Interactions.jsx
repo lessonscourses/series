@@ -25,8 +25,13 @@ function run(on, every) {
     /* header */
     var h=$('.hdr'),bg=$('.burger'),m=$('.mnav');
     on(window,'scroll',function(){h&&h.classList.toggle('scrolled',scrollY>10)},{passive:true});
-    if(bg)on(bg,'click',function(){var o=m.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
-    $$('.mnav a').forEach(function(a){on(a,'click',function(){m.classList.remove('open');document.body.style.overflow=''})});
+    if(bg)on(bg,'click',function(){var o=m.classList.toggle('open');bg.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''});
+    $$('.mnav a').forEach(function(a){on(a,'click',function(){m.classList.remove('open');bg&&bg.classList.remove('open');document.body.style.overflow=''})});
+
+    /* mobile sticky CTA: only after the hero, hidden near the invite form */
+    var sticky=$('.m-sticky'),inv=$('#invite');
+    function stk(){if(!sticky)return;var r=inv?inv.getBoundingClientRect():null;var nearForm=r&&r.top<innerHeight&&r.bottom>0;sticky.classList.toggle('show',scrollY>innerHeight*.7&&!nearForm)}
+    on(window,'scroll',stk,{passive:true});stk();
 
     /* reveal */
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
@@ -43,9 +48,22 @@ function run(on, every) {
     on(window,'scroll',function(){requestAnimationFrame(para)},{passive:true});on(window,'resize',para);para();
 
     /* schedule progress */
-    function schedProg(){var L=$('.sched-list');if(!L)return;var r=L.getBoundingClientRect(),mid=innerHeight*.55;
+    function schedProg(){var F=$('.flowline');if(F){var fr=F.getBoundingClientRect();var fp=Math.max(0,Math.min(1,(innerHeight*.75-fr.top)/(fr.height+innerHeight*.3)));$('.fl-track i',F).style.width=(fp*100)+'%';$$('.fl-step',F).forEach(function(st,i,a){st.classList.toggle('on',fp>=i/a.length)})}
+      var L=$('.sched-list');if(!L)return;var r=L.getBoundingClientRect(),mid=innerHeight*.55;
       var p=Math.max(0,Math.min(1,(mid-r.top)/r.height));$('.prog',L).style.height=(p*(r.height-20))+'px';
       $$('li',L).forEach(function(li){var t=li.getBoundingClientRect().top;li.classList.toggle('on',t<mid&&t>mid-li.offsetHeight-40)})}
+
+    /* manifesto: words light up as the block scrolls through the viewport */
+    $$('[data-lit]').forEach(function(p){if(p.dataset.ready)return;p.dataset.ready=1;
+      p.innerHTML=p.textContent.trim().split(/\s+/).map(function(w){return '<span>'+w+'</span>'}).join(' ')});
+    function lit(){$$('[data-lit]').forEach(function(p){var r=p.getBoundingClientRect(),ws=$$('span',p);
+      var k=Math.max(0,Math.min(1,(innerHeight*.85-r.top)/(r.height+innerHeight*.35)));var n=Math.round(k*ws.length);
+      ws.forEach(function(w,i){w.classList.toggle('on',i<n)})})}
+    on(window,'scroll',function(){requestAnimationFrame(lit)},{passive:true});lit();
+    /* count-up numbers */
+    var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;cio.unobserve(e.target);var el=e.target,to=+el.dataset.to,t0=performance.now();
+      function st(t){var k=Math.min(1,(t-t0)/1200),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=v+(el.dataset.plus!==undefined&&k===1?'+':'');if(k<1)requestAnimationFrame(st)}requestAnimationFrame(st)})},{threshold:.6});
+    $$('[data-to]').forEach(function(el){cio.observe(el)});
 
     /* live local clocks */
     function clocks(){$$('[data-tz]').forEach(function(el){try{el.textContent=new Intl.DateTimeFormat('en-GB',{timeZone:el.dataset.tz,hour:'2-digit',minute:'2-digit'}).format(new Date())}catch(e){}})}
@@ -71,7 +89,5 @@ function run(on, every) {
       on(window,'keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)})}
 
     /* invite form (prototype) */
-    var f=$('#inviteForm');if(f)on(f,'submit',function(e){e.preventDefault();$('#fBody').style.display='none';$('#fDone').classList.add('on')});
-    var back=$('#fBack');if(back)back.onclick=function(){$('#fBody').style.display='';$('#fDone').classList.remove('on')};
 
 }
