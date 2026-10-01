@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer><div className="wrap"><div className="foot">
       <div>
-        <a className="brand" href="/"><img src="/brand/symbol.png" alt="" /><span><b>LEGENDS</b><small>PRIVATE INVESTOR NETWORK</small></span></a>
+        <a className="brand" href="/"><img src="/brand/symbol.png" alt="" /><span><b>LEGENDS</b><small>PRIVATE INVESTORS NETWORK</small></span></a>
         <p className="foot-about">Private Investors Network. Rare, high-quality deals from investors. Co-investment. Additional capital. Private events.</p>
       </div>
       <div><h4>Next dinners</h4><ul>

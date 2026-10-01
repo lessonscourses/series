@@ -1097,7 +1097,7 @@ body{overflow-x:hidden}
   .city .date b{font-size:60px}
   .hdr{top:10px}
   .hdr-in{height:60px}
-  .brand small{display:none}
+  .brand small{display:block;font-size:7.5px;letter-spacing:.1em}
 }
 @media (max-width:900px){.qband{grid-template-columns:minmax(0,1fr)}.qb-photo{aspect-ratio:auto;height:280px;min-height:0}}
 
@@ -1369,3 +1369,8 @@ details p{max-width:680px}
   .scroll-cue{display:none}
 }
 @media (min-width:761px){.m-hero h1{font-size:clamp(48px,5.4vw,86px)}}
+@media (max-width:760px){
+  .tbl{min-height:0;padding:22px 20px}
+  .tbl h3{margin-top:22px;font-size:20px}
+  .tbl::before{right:-220px;top:-220px;width:300px;height:300px}
+}

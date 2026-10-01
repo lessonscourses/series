@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <>
       <header className={'hdr' + (thanks ? ' hdr-min' : '')}><div className="hdr-in">
-        <a className="brand" href="/"><img src="/brand/symbol.png" alt="" /><span><b>LEGENDS</b><small>PRIVATE INVESTOR NETWORK</small></span></a>
+        <a className="brand" href="/"><img src="/brand/symbol.png" alt="" /><span><b>LEGENDS</b><small>PRIVATE INVESTORS NETWORK</small></span></a>
         {!thanks && <nav className="nav">{NAV.map(([h, t]) => <a key={h} href={'/' + h}>{t}</a>)}</nav>}
         <div className="hdr-act">{cta}
           {!thanks && <button className="burger" aria-label="Menu" aria-expanded="false"><i /><i /></button>}</div>
