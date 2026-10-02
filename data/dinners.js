@@ -1,6 +1,6 @@
 // Legends investor dinners, Q4 2026. One row per dinner.
 // url: set when the city has its own landing (the card links there and is shown as "Venue confirmed").
-export const SINGAPORE_URL = 'https://offlineevent-production.up.railway.app/';
+export const SINGAPORE_URL = 'https://legends.app/events/singapore-081026/';
 
 export const DINNERS = [
   { id: 1, city: 'Singapore', day: 8, dow: 'Thu', month: 'October', anchor: 'Milken Institute Asia Summit', region: 'Asia', iso: '2026-10-08', url: SINGAPORE_URL, time: '5:00-8:00 PM' },

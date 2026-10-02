@@ -2,16 +2,17 @@ import Calendar from '@/components/Calendar';
 import Faq from '@/components/Faq';
 import Gallery from '@/components/Gallery';
 import ApplyForm from '@/components/apply/ApplyForm';
+import SeatTable from '@/components/SeatTable';
 import { SINGAPORE_URL } from '@/data/dinners';
 
 const Arr = ({ c = 'arr' }) => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
 
 const STEPS = [
-  ['Arrival', 'Arrive and settle in', 'Meet the other investors as everyone arrives.'],
-  ['Introductions', 'Around the table', 'Who you are, what you invest in and what’s on your radar.'],
-  ['Asks & gives', 'What you need - and what you offer', 'Current asks, opportunities and where you can help others.', true],
-  ['Dinner', 'The rest of the evening is yours', 'Dinner, market views, deals and open conversation.', true],
-  ['After', 'The network continues', 'Stay connected through Legends beyond the evening.'],
+  ['17:00', 'Arrival', 'Meet the other nine investors.'],
+  ['17:30', 'Introductions', 'Who you are, what you invest in.'],
+  ['18:00', 'Asks & gives', 'What you need. What you can offer.', true],
+  ['18:30', 'Dinner', 'Deals, market views, open conversation.', true],
+  ['20:00', 'Close', 'The network continues after dinner.'],
 ];
 const GUESTS = [
   ['family-office', 'FAMILY OFFICES', 'Principals & investment teams', 'Direct deals, funds and private markets.'],
@@ -30,7 +31,7 @@ export default function Page() {
         <div className="m-bigword w2" data-speed="-.3" data-axis="x">OCTOBER · NOVEMBER · DECEMBER · 2026 ·</div>
         <div className="wrap m-hero-grid">
           <div>
-            <span className="m-kick rv"><i />Investor dinners · October - December 2026</span>
+            <p className="m-kick rv"><span>Investor dinners</span><i /><span>Oct - Dec 2026</span></p>
             <h1 className="rv d1">Twelve evenings.<br />Eight cities.<br /><span className="gold">One network.</span></h1>
             <p className="lead rv d2">Private networking dinners for active investors - 10 guests, one table, in the week when the right people are already in town.</p>
             <div className="ctas rv d3"><a className="btn gold" href="#invite">Request an invitation <Arr /></a><a className="btn ghost" href="#calendar">See the calendar</a></div>
@@ -78,31 +79,37 @@ export default function Page() {
         <div className="sec-head rv"><span className="kicker">Who attends</span><h2 className="h2">The people around the table</h2></div>
         <div className="tables4">
           {GUESTS.map(([ic, n, h, p], i) => (
-            <div key={ic} className={'tbl rv d' + i}><img className="tbl-ic" src={`/icons/${ic}.png`} alt="" /><span className="tbl-n" style={{ textTransform: 'none' }}>{n}</span><h3>{h}</h3><p>{p}</p></div>
+            <div key={ic} className={'tbl rv d' + i}><span className="tbl-n" style={{ textTransform: 'none' }}>{n}</span><h3>{h}</h3><p>{p}</p></div>
           ))}
         </div>
       </div></section>
 
       {/* ===== How it runs ===== */}
       <section className="sec" id="format" style={{ paddingTop: 0 }}><div className="wrap">
-        <div className="sec-head rv"><span className="kicker">How an evening runs</span><h2 className="h2">One format. Every city</h2>
-          <p className="lead sec-sub">About three hours in the early evening. The exact time and venue are confirmed for each dinner and shared with confirmed guests.</p></div>
+        <div className="sec-head rv"><span className="kicker">How an evening runs</span><h2 className="h2">Three hours. Simple by design</h2>
+          <p className="lead sec-sub">One format in every city. Exact time and venue are confirmed for each dinner and shared with confirmed guests.</p></div>
         <div className="flowline rv">
           <span className="fl-track"><i /></span>
           {STEPS.map(([k, h, p, key], i) => (
-            <div key={k} className={'fl-step' + (key ? ' key' : '')}><span className="fl-n">{String(i + 1).padStart(2, '0')}</span><span className="fl-k">{k}</span><h3>{h}</h3><p>{p}</p></div>
+            <div key={k} className={'fl-step' + (key ? ' key' : '')}><span className="fl-t">{k}</span><h3>{h}</h3><p>{p}</p></div>
           ))}
         </div>
-        <div className="fl-foot rv"><span><i />Indicative format - details vary by city and venue</span><a className="tlink" href={SINGAPORE_URL + '#schedule'}>See the Singapore schedule <Arr c="" /></a></div>
+        <div className="fl-foot rv"><span><i />Times shown for Singapore - each city confirms its own</span><a className="tlink" href={SINGAPORE_URL + '#schedule'}>See the Singapore schedule <Arr c="" /></a></div>
       </div></section>
 
       <Gallery />
 
       {/* ===== Invite ===== */}
       <section className="sec" id="invite" style={{ paddingTop: 0 }}><div className="wrap inv">
-        <div className="apply-card rv"><div className="rings"><i /><i /><i /></div><span className="kicker">Invitation only</span>
-          <h2>10 seats per dinner. Investors only</h2><p>Every guest is reviewed individually.</p>
-          <ol className="flow"><li><b>01</b>Submit your details</li><li><b>02</b>Personal review</li><li><b>03</b>Seat confirmation</li><li><b>04</b>Venue details</li></ol></div>
+        <div className="apply-card rv"><span className="kicker">Invitation only</span>
+          <h2>10 seats. Each one personally confirmed</h2>
+          <p>The goal is not to fill the table. It is to make the table worth joining.</p>
+          <SeatTable />
+          <figure className="ap-quote">
+            <blockquote>“Every deal I regret started with the wrong introduction. Every one I’m proud of started with the right one.”</blockquote>
+            <figcaption><img src="/brand/yanis.webp" alt="Yanis Chkhatval" /><span><b>Yanis Chkhatval</b>Private investor &amp; entrepreneur. Founder of Legends.</span></figcaption>
+          </figure>
+        </div>
         <div className="form rv d1"><ApplyForm idPrefix="inv" /></div>
       </div></section>
 
