@@ -65,7 +65,7 @@ export default function ApplyForm({ idPrefix = 'af', autoFocus = false }) {
       <button className="af-submit" type="submit" disabled={sending}>
         {sending ? 'Sending…' : 'Request an invitation →'}
       </button>
-      <p className="af-legal">Submission does not guarantee a seat. By submitting, you agree to our <a href="https://belegends.club/terms">Terms</a> and <a href="https://belegends.club/privacy">Privacy</a>.</p>
+      <p className="af-legal">Submission does not guarantee a seat. By submitting, you agree to our <a href="https://legends.app/terms">Terms</a> and <a href="https://legends.app/privacy">Privacy</a>.</p>
       <ol className="af-steps"><li><b>01</b>Apply</li><li><b>02</b>Review</li><li><b>03</b>Seat confirmed</li><li><b>04</b>Venue shared</li></ol>
     </form>
   );

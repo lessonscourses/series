@@ -14,8 +14,7 @@ export default function EventCard() {
   if (!dinner) {
     return (
       <section className="ty-card ty-event">
-        <p className="ty-kicker">Event details</p>
-        <h2 className="ty-event-title">Legends Investor Dinners</h2>
+          <h2 className="ty-event-title">Legends Investor Dinners</h2>
         <ul className="ty-details">
           <li><Cal /><span><b>{multi ? 'Several dinners selected' : 'October - December 2026'}</b>We’ll confirm dates and venues with you directly.</span></li>
           <li><Pin /><span><b>{DINNERS.length} dinners in 8 cities</b><em>Venues shared with confirmed guests</em></span></li>
@@ -28,7 +27,6 @@ export default function EventCard() {
   const ics = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Legends//Investor Dinner//EN', 'BEGIN:VEVENT', `UID:legends-${dinner.id}-${ymd(dinner.iso)}@belegends.club`, `DTSTART;VALUE=DATE:${ymd(dinner.iso)}`, `DTEND;VALUE=DATE:${next(dinner.iso)}`, `SUMMARY:${title}`, `DESCRIPTION:${DESC}`, `LOCATION:Premium venue in ${dinner.city}`, 'STATUS:TENTATIVE', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n'));
   return (
     <section className="ty-card ty-event">
-      <p className="ty-kicker">Event details</p>
       <h2 className="ty-event-title">{title}</h2>
       <ul className="ty-details">
         <li><Cal /><span><b>{dinner.dow === 'Thu' ? 'Thursday' : dinner.dow === 'Wed' ? 'Wednesday' : 'Tuesday'}, {dinner.day} {dinner.month} 2026</b>{dinner.time || 'Exact time confirmed with your seat'}</span></li>

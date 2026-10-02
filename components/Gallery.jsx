@@ -3,7 +3,7 @@ export default function Gallery() {
   return (
     <>
       <section className="sec" id="gallery" style={{paddingTop:"0"}}><div className="wrap">
-      <div className="row-head"><div className="sec-head rv"><span className="kicker">Experience behind the format</span><h2 className="h2">Shaped by 80+ private gatherings</h2></div></div>
+      <div className="row-head"><div className="sec-head rv"><h2 className="h2">Shaped by 80+ private gatherings</h2></div></div>
       <div className="mgal rv">
        <button className="v" data-lb="https://belegends.club/assets/site-loop.webm" data-type="video" aria-label="Watch the highlights">
          <video autoPlay muted loop playsInline poster="https://belegends.club/assets/site-loop-poster.jpg"><source src="https://belegends.club/assets/site-loop.webm" type="video/webm" /></video>
