@@ -10,7 +10,6 @@ export default function Footer() {
       <div>
         <a className="brand" href={SITE + '/'}><img src="/brand/symbol.png" alt="" /><span><b>LEGENDS</b></span></a>
         <p className="foot-about">Uniting Legends. Private Investor Network: co-investment, deal flow, additional capital, private events.</p>
-        <a className="btn gold foot-cta" href="/#invite">Request an invitation <Arr /></a>
       </div>
       <div><h4>October</h4><ul>
         {next.map((d) => <li key={d.id}><a href={d.url || '/#calendar'}>{d.city}, {d.day} {d.month.slice(0, 3)}</a></li>)}
@@ -23,6 +22,7 @@ export default function Footer() {
       <div className="legal">
         <span>© 2026 AVELYTH PLATFORM LTD</span>
         <span className="legal-links"><a href={SITE + '/privacy'}>Privacy</a><a href={SITE + '/terms'}>Terms</a></span>
+        <a className="btn gold foot-cta" href="/#invite">Request an invitation <Arr /></a>
       </div>
     </div></div></footer>
   );

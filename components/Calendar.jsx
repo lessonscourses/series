@@ -18,7 +18,7 @@ export default function Calendar() {
   return (
     <>
       <div className="cal-bar rv">
-        <div className="cal-f">{REGIONS.map(([r, t]) => <button key={r} type="button" className={reg === r ? 'on' : ''} onClick={() => setReg(r)}>{t} <em>{count(r)}</em></button>)}</div>
+        <div className="cal-f">{REGIONS.map(([r, t]) => <button key={r} type="button" data-reg={r} className={reg === r ? 'on' : ''} onClick={() => setReg(r)}>{t} <em>{count(r)}</em></button>)}</div>
         <div className="cal-legend"><span><i className="lv" />Venue confirmed</span><span><i />Venue announced closer to the date</span></div>
       </div>
       <div className="cal">
@@ -35,15 +35,14 @@ export default function Calendar() {
                     <>
                       <span className="d"><b>{d.day}</b><span>{d.dow}<br />{d.month.slice(0, 3)}</span></span>
                       <h4>{d.city}</h4>
-                      <p>During {d.anchor} week</p>
                       <span className={'st' + (live ? ' lv' : '')}><i />{live ? `Venue confirmed · ${d.time}` : 'Venue to be announced'}</span>
                       <span className="go">{live ? 'View the dinner' : 'Apply for this dinner'}<Arr /></span>
                       {live && <span className="tag">Next</span>}
                     </>
                   );
                   return live
-                    ? <a key={d.id} className="cal-c live" href={d.url}>{inner}</a>
-                    : <button key={d.id} type="button" className={'cal-c' + (picked === d.id ? ' picked' : '')} onClick={() => pick(d)}>{inner}</button>;
+                    ? <a key={d.id} className="cal-c live" href={d.url} data-region={d.region}>{inner}</a>
+                    : <button key={d.id} type="button" className={'cal-c' + (picked === d.id ? ' picked' : '')} data-region={d.region} data-id={d.id} onClick={() => pick(d)}>{inner}</button>;
                 })}
               </div>
             </div>

@@ -33,7 +33,7 @@ export default function Page() {
       {/* ===== Hero ===== */}
       <section className="m-hero" id="top">
         <div className="m-orb o1" data-speed="-.15" /><div className="m-orb o2" data-speed=".1" />
-        <div className="m-bigword w1" data-speed=".35" data-axis="x">SINGAPORE · DUBAI · ABU DHABI · RIYADH · NEW YORK · ZURICH · LONDON · PALM BEACH ·</div>
+        <div className="m-bigword w1" data-speed=".35" data-axis="x">PRIVATE INVESTOR DINNERS · TEN SEATS · ONE TABLE ·</div>
         <div className="m-bigword w2" data-speed="-.3" data-axis="x">OCTOBER · NOVEMBER · DECEMBER · 2026 ·</div>
         <div className="wrap m-hero-grid">
           <div>
@@ -56,26 +56,22 @@ export default function Page() {
         <div className="scroll-cue"><i />Scroll</div>
       </section>
 
-      {/* ===== Why: scroll-lit manifesto ===== */}
+      {/* ===== Why: scroll-lit manifesto + what one evening can bring ===== */}
       <section className="mf" id="why">
         <div className="mf-glow" data-speed=".2" aria-hidden="true" />
         <div className="mf-word" data-speed="-.25" data-axis="x" aria-hidden="true">10 · 1 · 0 · 10 · 1 · 0 ·</div>
         <div className="wrap mf-in">
-          <h2 className="mf-h rv">Legends selects the table</h2>
-          <p className="mf-sub rv d1">Every investor week is full of people. The right ten are harder to find.</p>
           <p className="mf-text" data-lit>
-            Thousands of investors, funds and brokers. No selection.
-            Finding people you can trust usually takes years.
-            Here it takes one table and one evening.
+            You do not need more contacts. The right ten are harder to find.
+            Legends selects the table - introductions that usually take years, in one evening.
           </p>
-          <div className="mf-nums">
-            <div className="rv"><b data-to="10">0</b><strong>seats</strong><span>Active investors only</span></div>
-            <div className="rv d1"><b>Reviewed</b><span>Every guest, personally</span></div>
-            <div className="rv d2"><b>Private</b><span>Venue and guests stay off this page</span></div>
-            <div className="rv d3"><b data-to="80" data-plus>0</b><strong>gatherings</strong><span>Private events behind the format</span></div>
-          </div>
-          <div className="mf-out">
-            <h3 className="rv">One evening, one relationship may be enough</h3>
+          <ul className="mf-facts">
+            <li className="rv"><b><span data-to="10">0</span> seats</b><span>Active investors only</span></li>
+            <li className="rv d1"><b>Reviewed</b><span>Every guest, personally</span></li>
+            <li className="rv d2"><b>Private</b><span>Venue and guests stay off this page</span></li>
+          </ul>
+          <div className="mf-one">
+            <h2 className="mf-one-h rv">One evening, one relationship may be enough</h2>
             <ul>
               {OUTCOMES.map(([h, p], i) => <li key={h} className={'rv d' + i}><b>{h}</b><span>{p}</span></li>)}
             </ul>
@@ -96,7 +92,7 @@ export default function Page() {
           <p className="lead sec-sub">Only investors, at your level. Nobody pitching you. People who have walked the same journey.</p></div>
         <div className="tables4">
           {GUESTS.map(([h, p], i) => (
-            <div key={h} className={'tbl rv d' + i}><span className="tbl-no">{String(i + 1).padStart(2, '0')}</span><h3>{h}</h3><p>{p}</p></div>
+            <div key={h} className={'tbl rv d' + i}><h3>{h}</h3><p>{p}</p></div>
           ))}
         </div>
       </div></section>

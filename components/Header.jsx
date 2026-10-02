@@ -2,13 +2,13 @@
 import { usePathname } from 'next/navigation';
 
 const Arr = () => <svg className="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
-const NAV = [['#why', 'Why'], ['#calendar', 'Calendar'], ['#format', 'Schedule'], ['#gallery', 'Experience'], ['#faq', 'FAQ']];
+const NAV = [['#why', 'Why'], ['#format', 'Schedule'], ['#gallery', 'Experience'], ['#faq', 'FAQ']];
 
 export default function Header() {
   const thanks = (usePathname() || '').startsWith('/thank-you');
   const cta = thanks
     ? <a className="btn" href="/">Back to dinners <Arr /></a>
-    : <a className="btn" href="/#invite">Request an invitation <Arr /></a>;
+    : <a className="btn hdr-cta" href="/#invite">Request an invitation <Arr /></a>;
   return (
     <>
       <header className={'hdr' + (thanks ? ' hdr-min' : '')}><div className="hdr-in">
